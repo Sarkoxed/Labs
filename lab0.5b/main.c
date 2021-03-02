@@ -27,7 +27,7 @@ int main(){
   initialize(le_string, temp);
   le_string = orig;
 
-  if(new_list(le_string, begend[0], begend[2]) == 1){
+  if(new_list(le_string, begend[0], begend[2])){
     print_list(le_string);
   }else{
     printf("No YOU FUCKING SIMP");
