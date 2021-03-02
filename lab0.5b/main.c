@@ -6,38 +6,31 @@
 int main(){
   list *le_string = NULL, *orig;
   char *temp;
-  char *begend = "a b";
+  char beg, end;
   int num = 2;
-  /*printf("Begining symbol is: ");
-  scanf("%m[^\n]", &begend);
-  printf("\n%c %c", begend[0], begend[2]);
-  scanf("%*[\n]");
-  //scanf("%*[\n]");
-  //printf("\n");
-  scanf("%*[\n]"); */
+
+  printf("Begining symbol is: ");   //если а = а то аba bnbna -> b
+  beg = getchar();
+  scanf("%*c", 0);
+  printf("Begining symbol is: ");
+  end = getchar();
+  scanf("%*c");
 
   printf("\nYour 1 string: ");
 
-  /*scanf("%m[^\n]", &temp);
-  le_string = init(temp[0]);
-  orig = le_string;
+  while(scanf("%m[^\n]", &temp) != EOF){
 
-  initialize(le_string, temp);
-  le_string = orig;
-  le_string = new_list(le_string, begend[0], begend[2]);*/
-
-
-  while(scanf("%m[^\n]", &temp) != -1){
-    if (strlen(temp) == 0){
+    if (temp == NULL){
       printf("No words found");
     }
+
     else{
       le_string = init(temp[0]);
       orig = le_string;
       initialize(le_string, temp);
       le_string = orig;
 
-      le_string = new_list(le_string, begend[0], begend[2]);
+      le_string = new_list(le_string, beg, end);
 
       if(le_string == NULL){
         printf("There're no pairs of such a symbols in this string\n ");
@@ -51,7 +44,7 @@ int main(){
     printf("\n#################################################\n");
 
     printf("Your %d string: ", num++);
-    scanf("%*[\n]");
+    scanf("%*c");
 
     free(temp);
     free_list(le_string);

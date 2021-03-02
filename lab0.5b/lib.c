@@ -11,20 +11,23 @@ void initialize(list *le_string, char *s){
 
 
 list * new_list(list *le_string, char b, char e){
-  int k = 0;
-  list *p;          //запоминание начала
+  int k = 0, zack = 0;
+  list *p, *d;          //запоминание начала
 
   while((le_string->c != b)&&(le_string != NULL)){
     le_string = del_root(le_string);
   }
+
   p = le_string;
 
   if (le_string == NULL){
-    return le_string;
+    return NULL;                       //ПИЗДОООООООООООООс2
   }
 
   while(le_string != NULL){
-    if((le_string->c == b)&&(k == 0)){
+    if((le_string->c == b)&&(!k)){
+
+      d = le_string->next;            //первое появление нового beg
 
       if (le_string == p){
          le_string = del_root(le_string);
@@ -33,9 +36,10 @@ list * new_list(list *le_string, char b, char e){
          le_string = del(le_string, p);
       }
       k = 1;
+
     }
 
-    else if((le_string->c == e)&&(k == 1)){
+    else if((le_string->c == e)&&(k)){
       le_string = del(le_string, p);
       le_string = add(le_string, ' ');
       k = 0;
@@ -46,6 +50,32 @@ list * new_list(list *le_string, char b, char e){
 
     le_string = le_string->next;
 
+  }
+
+  if(k == 1){
+    le_string = d;
+
+    if(d == p){                                //строка вида begbeg... with no end
+      while(le_string != NULL){
+        le_string = del_root(le_string);
+      }
+      return NULL;
+    }
+
+
+    else{
+      while(le_string != NULL){
+        d = le_string;
+        print_list(le_string);                       //ПИЗДОООООООООООООс
+        le_string = d;
+        printf("\n");
+        le_string = del(le_string, p);
+      }
+
+      le_string = p;
+      return le_string;
+
+   }
   }
 
   le_string = p;
