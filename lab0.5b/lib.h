@@ -3,7 +3,7 @@
 #include <string.h>
 
 typedef struct list{
-    char el;
+    char c;
     struct list *next;
 }list;
 
@@ -13,4 +13,4 @@ list * del(list *a, list *orig);
 list * del_root(list *orig);
 void print_list(list *a);
 void initialize(list *le_string, char *s);
-int new_list(list *le_string, char b, char e);
+list * new_list(list *le_string, char b, char e);

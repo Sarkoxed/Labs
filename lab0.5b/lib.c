@@ -9,31 +9,33 @@ void initialize(list *le_string, char *s){
     }
 }
 
-int new_list(list *le_string, char b, char e){
-  int k = 0;
-  list *p;
 
-  while((le_string->el != b)&&(le_string != NULL)){
+list * new_list(list *le_string, char b, char e){
+  int k = 0;
+  list *p;          //запоминание начала
+
+  while((le_string->c != b)&&(le_string != NULL)){
     le_string = del_root(le_string);
   }
   p = le_string;
 
   if (le_string == NULL){
-    return 0;
+    return le_string;
   }
 
   while(le_string != NULL){
-    if((le_string->el == b)&&(k == 0)){
+    if((le_string->c == b)&&(k == 0)){
+
       if (le_string == p){
          le_string = del_root(le_string);
          p = le_string;
       }else{
-        le_string = del(le_string, p);
+         le_string = del(le_string, p);
       }
       k = 1;
     }
 
-    else if((le_string->el == e)&&(k == 1)){
+    else if((le_string->c == e)&&(k == 1)){
       le_string = del(le_string, p);
       le_string = add(le_string, ' ');
       k = 0;
@@ -42,21 +44,20 @@ int new_list(list *le_string, char b, char e){
       le_string = del(le_string, p);
     }
 
-
     le_string = le_string->next;
 
-
   }
+
   le_string = p;
 
-  return 1;
+  return le_string;
 }
 
 
 list * init(char x){
   list *a;
   a = malloc(sizeof(list));
-  a->el = x;
+  a->c = x;
   a->next = NULL;
   return a;
 }
@@ -67,7 +68,7 @@ list * add(list *a, char c){
   tmp = malloc(sizeof(list));
   p = a->next;                //сохранение указателя на следующий элемент
   a->next = tmp;              //перстановка указателя текущего на добавляемый элемент
-  tmp->el = c;                //перстановка указателя на добавляемый элемент
+  tmp->c = c;                //перстановка указателя на добавляемый элемент
   tmp->next = p;              //установка указателя добавленного элемента на следующий
   return tmp;                //адрес добавленного элемента
 }
@@ -81,7 +82,7 @@ list * del(list *a, list *orig){
     tmp = tmp->next;
   }
 
-  tmp->next = a->next;         //установка указателя перед а на после а
+  tmp->next = a->next;      //установка указателя перед а на после а
   free(a);
   return tmp;
 
@@ -100,7 +101,7 @@ void print_list(list *a){
   list *p;
   p = a;
   while(p != NULL){
-    printf("%c", p->el);
+    printf("%c", p->c);
     p = p->next;
   }
 }

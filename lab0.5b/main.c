@@ -7,8 +7,6 @@ int main(){
   list *le_string = NULL, *orig;
   char *temp;
   char *begend = "a b";
-  int n;
-
   int num = 2;
   /*printf("Begining symbol is: ");
   scanf("%m[^\n]", &begend);
@@ -20,29 +18,27 @@ int main(){
 
   printf("\nYour 1 string: ");
 
-  scanf("%m[^\n]", &temp);
+  /*scanf("%m[^\n]", &temp);
   le_string = init(temp[0]);
   orig = le_string;
 
   initialize(le_string, temp);
   le_string = orig;
-
-  if(new_list(le_string, begend[0], begend[2])){
-    print_list(le_string);
-  }else{
-    printf("No YOU FUCKING SIMP");
-  }
+  le_string = new_list(le_string, begend[0], begend[2]);*/
 
 
-/*  while(scanf("%m[^\n]", &temp) != -1){
-    //printf("%s", temp);
+  while(scanf("%m[^\n]", &temp) != -1){
     if (strlen(temp) == 0){
       printf("No words found");
     }
     else{
-      le_string = initialize(le_string, temp);
+      le_string = init(temp[0]);
+      orig = le_string;
+      initialize(le_string, temp);
+      le_string = orig;
 
       le_string = new_list(le_string, begend[0], begend[2]);
+
       if(le_string == NULL){
         printf("There're no pairs of such a symbols in this string\n ");
       }
@@ -64,6 +60,6 @@ int main(){
   free(temp);
 
   printf("\n\n\n-------------------Input ended.-------------------\n");
-*/
+
 return 0;
 }
