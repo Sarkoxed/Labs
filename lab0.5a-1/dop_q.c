@@ -25,6 +25,10 @@ void new_words(char *word, char *a,int *a_timer, char *b, int *b_timer){
       *a_timer += 1;
     }
     else{
+      if((cur != b[*b_timer - 1])&&(*b_timer != 0)){
+        b[*b_timer] = ' ';
+        *b_timer += 1;
+      }
       b[*b_timer] = cur;
       *b_timer += 1;
     }
