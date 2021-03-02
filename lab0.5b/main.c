@@ -4,41 +4,66 @@
 #include "lib.h"
 
 int main(){
+  list *le_string = NULL, *orig;
+  char *temp;
+  char *begend = "a b";
+  int n;
 
-  printf("Symbols are: ");
-  scanf()
-  printf("Your 1 string: ");
+  int num = 2;
+  /*printf("Begining symbol is: ");
+  scanf("%m[^\n]", &begend);
+  printf("\n%c %c", begend[0], begend[2]);
+  scanf("%*[\n]");
+  //scanf("%*[\n]");
+  //printf("\n");
+  scanf("%*[\n]"); */
+
+  printf("\nYour 1 string: ");
+
+  scanf("%m[^\n]", &temp);
+  le_string = init(temp[0]);
+  orig = le_string;
+
+  initialize(le_string, temp);
+  le_string = orig;
+
+  if(new_list(le_string, begend[0], begend[2]) == 1){
+    print_list(le_string);
+  }else{
+    printf("No YOU FUCKING SIMP");
+  }
 
 
-
-  /*while(scanf("%m[^\n]", &temp) != -1){
-    n = strlen(temp);
-    new_string = calloc(n,sizeof(char));
-    repeated = calloc(n,sizeof(char));
-
-    new_strings(new_string, repeated, temp, n);
-
-    if(strlen(new_string) > 0){
-      printf("\nNew string, without dublication: %s", new_string);
+/*  while(scanf("%m[^\n]", &temp) != -1){
+    //printf("%s", temp);
+    if (strlen(temp) == 0){
+      printf("No words found");
     }
     else{
-      printf("\nNo words Found in original string");
-    }
-    if(strlen(repeated) > 0){
-    printf("\nAll Dublications:                %s\n", repeated);    }
-    else{
-      printf("\nNo Dublications Found");
-    } */
+      le_string = initialize(le_string, temp);
+
+      le_string = new_list(le_string, begend[0], begend[2]);
+      if(le_string == NULL){
+        printf("There're no pairs of such a symbols in this string\n ");
+      }
+      else{
+        printf("New string is: ");
+        print_list(le_string);
+      }
+   }
 
     printf("\n#################################################\n");
 
     printf("Your %d string: ", num++);
     scanf("%*[\n]");
 
+    free(temp);
+    free_list(le_string);
+
   }
   free(temp);
 
   printf("\n\n\n-------------------Input ended.-------------------\n");
-
+*/
 return 0;
 }
