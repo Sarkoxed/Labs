@@ -14,7 +14,7 @@ list * new_list(list *le_string, char b, char e){
   int k = 1;
   list *orig, *beg_end;
 
-  while((le_string != NULL)&&(k == 1)){              //нахождение первого символа beg
+  while((le_string != NULL)&&(k == 1)){              //first appearence of beg
     if (le_string->c != b){
       le_string = del_root(le_string);
     }
@@ -23,7 +23,7 @@ list * new_list(list *le_string, char b, char e){
     }
   }
 
-  orig = le_string;                                //запоминание начала
+  orig = le_string;                                //remembering origin
 
   if (le_string == NULL){
     return le_string;
@@ -31,14 +31,12 @@ list * new_list(list *le_string, char b, char e){
 
   while(le_string != NULL){
     if((le_string->c == b)&&(!k)){
-      print_list(le_string);
-      printf(" - a found\n");
 
       if (le_string == orig){
          le_string = del_root(le_string);
          orig = le_string;
 
-         beg_end = le_string;                        //первое появление нового beg может быть а может нет
+         beg_end = le_string;                       //first appearence og beg or not
 
       }else{
          le_string = del(le_string, orig);
@@ -52,35 +50,24 @@ list * new_list(list *le_string, char b, char e){
       le_string = del(le_string, orig);
       le_string = add(le_string, ' ');
 
-      beg_end = le_string;                      //первое появление нового beg
+      beg_end = le_string;                      //first appearence of new beg
 
-      print_list(le_string);
       k = 0;
-      printf(" - b found\n");
     }
 
     else if(k == 0){
       le_string = del(le_string, orig);
-      print_list(le_string);
-      printf(" - deleted govno\n");
     }
 
     le_string = le_string->next;
-    
+
   }
 
-  print_list(le_string);
-  printf(" ended govno %d\n", k);
-
-  if(k == 1){
-    le_string = orig;
-    print_list(le_string);
-    printf(" printed govno again\n");
+  if(k == 1){                            //if beg appeared but no end came
     le_string = beg_end;
-    print_list(le_string);
-    printf(" printed govno again\n");
 
-    if(beg_end == orig){                                //строка вида begbeg... with no end
+    if(beg_end == orig){                //string of type "begbeg..."" with no end
+
       while(le_string != NULL){
         le_string = del_root(le_string);
       }
@@ -91,14 +78,8 @@ list * new_list(list *le_string, char b, char e){
     else{
       while(le_string != NULL){
         le_string = del(le_string, orig);
-        print_list(le_string);
-        printf(" - deleted govno~~\n");
         le_string = le_string->next;
       }
-
-      le_string = orig;
-      return le_string;
-
    }
  }
 
@@ -129,13 +110,13 @@ list * add(list *a, char c){
 
 list * del(list *a, list *orig){
   list *tmp;
-  tmp = orig;                  //указатель на начало оригинального
+  tmp = orig;
 
-  while(tmp->next != a){       //поиск указателя а
+  while(tmp->next != a){
     tmp = tmp->next;
   }
 
-  tmp->next = a->next;      //установка указателя перед а на после а
+  tmp->next = a->next;
   free(a);
   return tmp;
 

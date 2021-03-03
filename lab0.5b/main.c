@@ -11,7 +11,7 @@ int main(){
 
   printf("Begining symbol is: ");   //если а = а то аba bnbna -> b, можно исправить двойным циклом
   beg = getchar();
-  scanf("%*c", 0);
+  scanf("%*c");
   printf("Begining symbol is: ");
   end = getchar();
   scanf("%*c");
