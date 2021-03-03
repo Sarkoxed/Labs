@@ -9,7 +9,7 @@ int main(){
   char beg, end;
   int num = 2;
 
-  printf("Begining symbol is: ");   //если а = а то аba bnbna -> b
+  printf("Begining symbol is: ");   //если а = а то аba bnbna -> b, можно исправить двойным циклом
   beg = getchar();
   scanf("%*c", 0);
   printf("Begining symbol is: ");
@@ -19,7 +19,6 @@ int main(){
   printf("\nYour 1 string: ");
 
   while(scanf("%m[^\n]", &temp) != EOF){
-
     if (temp == NULL){
       printf("No words found");
     }
@@ -28,7 +27,6 @@ int main(){
       le_string = init(temp[0]);
       orig = le_string;
       initialize(le_string, temp);
-      le_string = orig;
 
       le_string = new_list(le_string, beg, end);
 
@@ -56,3 +54,13 @@ int main(){
 
 return 0;
 }
+
+/* Test cases
+for a, b
+
+aaaaaaaaaaaaaa -> none
+bbbbbbbb -> none
+ajkub -> jku
+amkmkb aaaaaa -> mkmk
+anb amb alb aaa -> n m l
+*/

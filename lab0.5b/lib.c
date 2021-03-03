@@ -11,75 +11,98 @@ void initialize(list *le_string, char *s){
 
 
 list * new_list(list *le_string, char b, char e){
-  int k = 0, zack = 0;
-  list *p, *d;          //запоминание начала
+  int k = 1;
+  list *orig, *beg_end;
 
-  while((le_string->c != b)&&(le_string != NULL)){
-    le_string = del_root(le_string);
+  while((le_string != NULL)&&(k == 1)){              //нахождение первого символа beg
+    if (le_string->c != b){
+      le_string = del_root(le_string);
+    }
+    else{
+      k--;
+    }
   }
 
-  p = le_string;
+  orig = le_string;                                //запоминание начала
 
   if (le_string == NULL){
-    return NULL;                       //ПИЗДОООООООООООООс2
+    return le_string;
   }
 
   while(le_string != NULL){
     if((le_string->c == b)&&(!k)){
+      print_list(le_string);
+      printf(" - a found\n");
 
-      d = le_string->next;            //первое появление нового beg
-
-      if (le_string == p){
+      if (le_string == orig){
          le_string = del_root(le_string);
-         p = le_string;
+         orig = le_string;
+
+         beg_end = le_string;                        //первое появление нового beg может быть а может нет
+
       }else{
-         le_string = del(le_string, p);
+         le_string = del(le_string, orig);
       }
+
       k = 1;
 
     }
 
     else if((le_string->c == e)&&(k)){
-      le_string = del(le_string, p);
+      le_string = del(le_string, orig);
       le_string = add(le_string, ' ');
+
+      beg_end = le_string;                      //первое появление нового beg
+
+      print_list(le_string);
       k = 0;
+      printf(" - b found\n");
     }
+
     else if(k == 0){
-      le_string = del(le_string, p);
+      le_string = del(le_string, orig);
+      print_list(le_string);
+      printf(" - deleted govno\n");
     }
 
     le_string = le_string->next;
-
+    
   }
 
-  if(k == 1){
-    le_string = d;
+  print_list(le_string);
+  printf(" ended govno %d\n", k);
 
-    if(d == p){                                //строка вида begbeg... with no end
+  if(k == 1){
+    le_string = orig;
+    print_list(le_string);
+    printf(" printed govno again\n");
+    le_string = beg_end;
+    print_list(le_string);
+    printf(" printed govno again\n");
+
+    if(beg_end == orig){                                //строка вида begbeg... with no end
       while(le_string != NULL){
         le_string = del_root(le_string);
       }
-      return NULL;
+      return le_string;
     }
 
 
     else{
       while(le_string != NULL){
-        d = le_string;
-        print_list(le_string);                       //ПИЗДОООООООООООООс
-        le_string = d;
-        printf("\n");
-        le_string = del(le_string, p);
+        le_string = del(le_string, orig);
+        print_list(le_string);
+        printf(" - deleted govno~~\n");
+        le_string = le_string->next;
       }
 
-      le_string = p;
+      le_string = orig;
       return le_string;
 
    }
-  }
+ }
 
-  le_string = p;
-
+  le_string = orig;
   return le_string;
 }
 
