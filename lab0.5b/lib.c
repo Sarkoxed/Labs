@@ -100,11 +100,11 @@ list * init(char x){
 list * add(list *a, char c){
   list *tmp, *p;
   tmp = malloc(sizeof(list));
-  p = a->next;                //сохранение указателя на следующий элемент
-  a->next = tmp;              //перстановка указателя текущего на добавляемый элемент
-  tmp->c = c;                //перстановка указателя на добавляемый элемент
-  tmp->next = p;              //установка указателя добавленного элемента на следующий
-  return tmp;                //адрес добавленного элемента
+  p = a->next;             
+  a->next = tmp;
+  tmp->c = c;
+  tmp->next = p;
+  return tmp;
 }
 
 
