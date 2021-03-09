@@ -1,7 +1,6 @@
 /lib.o
 /libmain.so
-makefile
 makefile1
 /*.out
 /fuzzing
-/.gitignore
+
