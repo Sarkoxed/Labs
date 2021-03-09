@@ -3,6 +3,18 @@
 #include <string.h>
 #include "lib.h"
 
+int check_cal(char *t){
+  if(t == NULL){
+    printf("You need more ram for such a string, repeat please with less amount of characters\n");
+    free(t);
+    scanf("%*[^\n]");
+    scanf("%*c");
+    return 0;
+  }
+  return 1;
+}
+
+
 void initialize(list *le_string, char *s){
   for(int i = 1; i < strlen(s); i++){
     le_string = add(le_string, s[i]);
@@ -100,7 +112,7 @@ list * init(char x){
 list * add(list *a, char c){
   list *tmp, *p;
   tmp = malloc(sizeof(list));
-  p = a->next;             
+  p = a->next;
   a->next = tmp;
   tmp->c = c;
   tmp->next = p;
