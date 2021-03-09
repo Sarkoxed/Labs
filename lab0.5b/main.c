@@ -6,16 +6,16 @@
 int main(){
   list *le_string = NULL, *orig;
   char *temp;
-  char beg, end;
+  char beg = 'a', end = 'b';
   int num = 2;
 
-  printf("Begining symbol is: ");   //если а = а то аba bnbna -> b, можно исправить двойным циклом
+/*  printf("Begining symbol is: ");   //если а = а то аba bnbna -> b, можно исправить двойным циклом
   beg = getchar();
   scanf("%*c");
   printf("Begining symbol is: ");
   end = getchar();
   scanf("%*c");
-
+*/
   printf("\nYour 1 string: ");
 
   while(scanf("%m[^\n]", &temp) != EOF){
@@ -36,6 +36,7 @@ int main(){
       else{
         printf("New string is: ");
         print_list(le_string);
+        free_list(le_string);
       }
    }
 
@@ -45,7 +46,6 @@ int main(){
     scanf("%*c");
 
     free(temp);
-    free_list(le_string);
 
   }
   free(temp);

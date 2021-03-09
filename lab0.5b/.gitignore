@@ -1,5 +1,6 @@
 /lib.o
 /libmain.so
 makefile
-/string_maker.out
-
+/*.out
+/fuzzing
+/.gitignore
