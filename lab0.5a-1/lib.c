@@ -48,7 +48,8 @@ void new_strings(char *a, char *b, char *temp){
 
     p = strchr(temp, ch) + 1;
 
-    n = strlen(temp) - strlen(p);
+    n = p - temp;
+    //printf("%d %d\n", n, strlen(temp) - strlen(p));
 
     word = calloc(n, sizeof(char));
     strncpy(word, temp, n - 1);
