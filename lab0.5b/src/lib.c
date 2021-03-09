@@ -24,7 +24,7 @@ void initialize(list *le_string, char *s){
 
 list * new_list(list *le_string, char b, char e){
   int k = 1;
-  list *orig, *beg_end;
+  list *orig, *beg_end = NULL;
 
   while((le_string != NULL)&&(k == 1)){              //first appearence of beg
     if (le_string->c != b){
@@ -71,7 +71,9 @@ list * new_list(list *le_string, char b, char e){
       le_string = del(le_string, orig);
     }
 
-    le_string = le_string->next;
+    if(le_string != NULL){
+      le_string = le_string->next;
+    }
 
   }
 

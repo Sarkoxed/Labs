@@ -3,4 +3,4 @@
 makefile1
 /*.out
 src/fuzzing
-
+./fuzzing
