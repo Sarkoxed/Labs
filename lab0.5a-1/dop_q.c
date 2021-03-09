@@ -5,25 +5,41 @@
 
 int main(){
   char *temp, *temp1, *new_string, *repeated;
-  int n, num = 2;
+  int n, num = 1;
 
-  printf("Your 1 string: ");
+  printf("Your %d string: ", num++);
 
   while(scanf("%m[^\n]", &temp) != EOF){
-    check_cal(temp);
+
+    if(!check_cal(temp)){
+      printf("Your %d string: ", num);
+      continue;
+    }
     n = strlen(temp);
 
     temp1 = calloc(strlen(temp)+2, sizeof(char));
-    check_cal(temp1);
+
+    if (!check_cal(temp1)){
+      printf("Your %d string: ", num);
+      continue;
+    }
 
     strcat(temp1, temp);
     temp1[strlen(temp)] = ' ';                     //appending gap to temp
     free(temp);
 
     new_string = calloc(n + 1,sizeof(char));
-    check_cal(new_string);
+
+    if (!check_cal(new_string)){
+      printf("Your %d string: ", num);
+      continue;
+    }
     repeated = calloc(n + 1,sizeof(char));
-    check_cal(repeated);
+
+    if (!check_cal(repeated)){
+      printf("Your %d string: ", num);
+      continue;
+    }
 
 
     new_strings(new_string, repeated, temp1);

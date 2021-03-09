@@ -3,10 +3,15 @@
 #include "lib.h"
 #include <stdio.h>
 
-void check_cal(char *t){
+int check_cal(char *t){
   if(t == NULL){
-    printf("You need more ram");
+    printf("You need more ram for such a string, repeat please with less amount of characters\n");
+    free(t);
+    scanf("%*[^\n]");
+    scanf("%*c");
+    return 0;
   }
+  return 1;
 }
 
 void new_words(char *word, char *a,int *a_timer, char *b, int *b_timer){
