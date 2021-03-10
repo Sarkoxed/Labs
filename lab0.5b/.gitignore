@@ -2,5 +2,4 @@
 /libmain.so
 makefile1
 /*.out
-src/fuzzing
-./fuzzing
+/fuzzing
