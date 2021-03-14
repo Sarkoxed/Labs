@@ -6,7 +6,6 @@
 int check_cal(char *t){
   if(t == NULL){
     printf("You need more ram for such a string, repeat please with less amount of characters\n");
-    free(t);
     scanf("%*[^\n]");
     scanf("%*c");
     return 0;

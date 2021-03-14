@@ -1,5 +1,3 @@
-/lib.o
-/libmain.so
 makefile1
-/*.out
-/fuzzing
+*.out
+fuzzing/
