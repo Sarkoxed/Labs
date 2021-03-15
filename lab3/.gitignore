@@ -1,0 +1,4 @@
+/fuzzing/
+/*.out
+/makefile
+
